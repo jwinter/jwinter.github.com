@@ -1,77 +1,77 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://jwinter.org/blog/blog/2009/04/21/jogl-and-clojure/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2009/04/21/jogl-and-clojure/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
         <loc>
-            http://jwinter.org/blog/blog/2009/12/12/the-odds-against-christmas-being-christmas-ar/
+            http://jwinter.org/blog/2009/12/12/the-odds-against-christmas-being-christmas-ar/
         </loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2009/12/18/i-miss-anywherefm/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2009/12/18/i-miss-anywherefm/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2009/12/20/the-dough-was-for-me/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2009/12/20/the-dough-was-for-me/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2009/12/24/james-brown-loves-you/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2009/12/24/james-brown-loves-you/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2010/05/23/emacs-ansi-term-and-screen/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2010/05/23/emacs-ansi-term-and-screen/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2010/07/21/autotest-in-rails/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2010/07/21/autotest-in-rails/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2010/09/24/eventmachine-timers/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2010/09/24/eventmachine-timers/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2010/09/24/using-rvm-in-production-with-passenger/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2010/09/24/using-rvm-in-production-with-passenger/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2010/10/12/polyfills-for-backwards-compatibility/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2010/10/12/polyfills-for-backwards-compatibility/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
         <loc>
-            http://jwinter.org/blog/blog/2011/04/28/philadelphia-emerging-technology-for-the-ente/
+            http://jwinter.org/blog/2011/04/28/philadelphia-emerging-technology-for-the-ente/
         </loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
         <loc>
-            http://jwinter.org/blog/blog/2012/05/27/setting-up-a-new-macbook-pro-for-ruby-ror-dev/
+            http://jwinter.org/blog/2012/05/27/setting-up-a-new-macbook-pro-for-ruby-ror-dev/
         </loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2012/10/16/stubbing-http-apis-with-vcr/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2012/10/16/stubbing-http-apis-with-vcr/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
-        <loc>http://jwinter.org/blog/blog/2013/01/18/advice-for-personal-projects/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <loc>http://jwinter.org/blog/2013/01/18/advice-for-personal-projects/</loc>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/blog/archives/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/robots.txt</loc>
-        <lastmod>2013-03-02T09:29:59-05:00</lastmod>
+        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
     </url>
 </urlset>
