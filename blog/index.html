@@ -177,42 +177,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2011/04/28/philadelphia-emerging-technology-for-the-ente/">Yehuda Katz at Philly ETE - Rails 3.1 Engines</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-04-28T00:00:00-04:00" pubdate data-updated="true">Apr 28<span>th</span>, 2011</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><span style="font-size: medium;">Rails 3.1 Engines</span></p><p>Using an engine in Rails 3.0.x is functionally the same as copying the engine code directly into your app. There&#8217;s one giant global namespace for routing and helpers. This leads to ugly name mangling (devise_engine_login_helper) and routing collistions (match &#8220;login&#8221;).&nbsp;</p><div><span style="font-size: medium;">Detour into Rack</span></div><p /><div>Rack apps take a request hash (env) and return a response of [status_code, headers, response_body].</div><p /><div>Rails 3 router is Rack middleware, Rack apps</div><p /><div>Each middleware piece considers the thing above it &#8220;the server&#8221;, the thing below it as &#8220;the app&#8221;</div><p>Rails router can route to any rack app, seamlessly route to&nbsp;</p><p>&nbsp;</p><div>* Router chooses which Rack endpoint to send each request to</div><div>** match &#8220;/posts/*path&#8221; =&gt; SinatraApp || match &#8220;/users&#8221; =&gt; &#8220;posts#index&#8221; (translates to the controller action)</div><p /><p>&nbsp;</p><p>Some stuff that I probably should have known, but didn&#8217;t</p><p>Rails 3 router just points to Rack endpoints</p><p>Translates &#8220;posts#index&#8221; to PostsController.action(:index)</p><p>PostsController.action(:index) returns a Rack app</p><p>&nbsp;</p><p><span style="font-size: medium;">Mountable Engines in Rails 3.1 (currently in Rails edge)</span></p><p>Piotr Sarnacki developed engines for 3.1 for GSOC. His blog has a bunch of posts about Rails engines,&nbsp;<a href="http://piotrsarnacki.com/2010/12/21/mountable-apps-tutorial/  ">building an engine</a>, new&nbsp;<a href="http://piotrsarnacki.com/2010/09/14/mountable-engines/">features of engines</a>, and some of the&nbsp;<a href="http://piotrsarnacki.com/2010/09/06/rsoc-status-namespacing-engines/">reasoning behind the engines changes</a>.</p><p /><p /><div><div>** API called mount ! - mount SinatraApp =&gt; &#8220;/posts&#8221;</div><div>** This has all worked since Rails 3</div><div>** Rails 3.1&nbsp;</div><div>*** Use mount</div><div>*** Engines are now Rack apps</div><div>** General rule - mount Rack app under a specific url</div><div>** Helpers!</div><div>*** helper: devise.login_path</div><div>*** helper :all</div><div>*** only include helpers in the current namespace</div><div>** Register a namespace for the namespace for the App</div><div>*** register Blog, then Blog::helpers belong to the Blog app (?)</div><div>** Migrations</div><div>*** rake railties:copy_migrations</div><div>**** Copied over to record history</div><div>**** Timestamps are updated to reflect what happened</div><div>*** migrations are a history of applied changes</div><div>** Assets</div><div>*** served through Rails server</div><div>*** Should be easy to get working without configuration</div><div>*** Works</div><div>** Rails 3.1 Sprockets</div><div>*** Compilation pipeline</div><div>*** Top level concern - template handling,&nbsp;</div><div>*** amping up cache_javascript :all</div><div>*** could be a whole new talk</div><div>** Engines can have assets</div><div>** SCSS and CoffeeScript</div><div>*** SCSS - opt-in when you want to, avoid CSS3 vendor hacks</div><div>*** CoffeeScript application.js.coffee</div><div>*** //= require(&#8216;something&#8217;)</div><div>**** That&#8217;s a sprockets directive, see sprockets site</div><div>*** CoffeeScript - point to something cool that exists</div><div>** //= require(&#8220;rails_admin/login&#8221;);</div><div>*** SCSS can @import Engine Files</div><div>@import &#8220;rails_admin/mixins.scss&#8221;;</div><div>** rails plugin new blog &#8211;mountable &lt;=== build an engine</div><div>#+BEGIN_SRC ruby</div><div>module Blog</div><div>class Engine &lt; Rails::Engine</div><div>isolate_namespace Blog # where to look for helpers</div><div>end</div><div>end</div><div>#+END_SRC</div><div>** rails g scaffold post title:string&nbsp;</div><div>*** will detect that you&#8217;re in an engine that&#8217;s inside a namespace</div><div>*** Do all the scaffoldy stuff inside of a namespace Blog::Post</div><div>** rails server #works inside of an engine</div><div>*** Runs against dummy application that has loaded the engine inside of it</div><div>** piotrsarnacki.com ALL THE DETAILS !!!</div><div>*** What should params look like (they look the same)</div><div>** Questions</div><div>*** Multiple db connection not supported by Engines</div><div>*** Take a look at Octopus (db sharding)</div><div>**** Look at adding Engine support (use this db for this namespace)</div><div>** Assets - what&#8217;s the heroku problem? Look up the heroku problem</div><div>*** rake deploy (does that exist?)</div><div>** Devise will define the API &#8211; Devise for authentication</div></div><p /><p>&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2010/10/12/polyfills-for-backwards-compatibility/">&#8220;Polyfills&#8221; for Backwards Compatibility</a></h1>
     
     
@@ -249,42 +213,6 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/09/24/using-rvm-in-production-with-passenger/">Using RVM in Production With Passenger</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-09-24T00:00:00-04:00" pubdate data-updated="true">Sep 24<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><span style="font-family: arial, sans-serif;"><div class="kl" style="margin-bottom: 0.2em; text-align: left;">you need to generate a special passenger_ruby for passenger to run</div><div class="kl" style="margin-bottom: 0.2em; text-align: left;">and rvm-install-system-wide is just a bitly link to a git commit right now</div><div class="kl" style="margin-bottom: 0.2em; text-align: left;">oh and &#8220;rvm notes&#8221; will tell you what dependencies you&#8217;re missing after you install rvm, but before you install any rubies</div></span></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2010/09/24/eventmachine-timers/">EventMachine Timers</a></h1>
     
     
@@ -309,42 +237,6 @@
 
 
   <div class="entry-content"><p>There is a limit on the number of running eventmachine timers you can use at one time. &nbsp;And cancelling a timer does *not* free up one of those slots for running timers, you must wait until the time when the timer would actually fire to free up a slot. The default on most systems is 1000 timers. set_max_timers(count) allows you to increase it.</p><p>This doesn&#8217;t apply to the pure Ruby eventmachine, it has no max_timer limit.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/21/autotest-in-rails/">Autotest in Rails</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-21T00:00:00-04:00" pubdate data-updated="true">Jul 21<span>st</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Autotest runs all of your test whenever you save a change to a file.</p>
 </div>
   
   
@@ -424,6 +316,114 @@
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/12/20/the-dough-was-for-me/">The Dough Was for Me!</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-20T00:00:00-05:00" pubdate data-updated="true">Dec 20<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span style="font-size: 10px;"><object height="303" width="500"><param name="movie" value="http://www.youtube.com/v/F_J4SBUwe5U&hl=en_US&fs=1&rel=0" /></param><param name="allowFullScreen" value="true" /></param><param name="allowscriptaccess" value="always" /></param><embed allowfullscreen="true" src="http://www.youtube.com/v/F_J4SBUwe5U&hl=en_US&fs=1&rel=0" allowscriptaccess="always" type="application/x-shockwave-flash" height="303" width="500"></embed></object></span></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/12/18/i-miss-anywherefm/">I Miss anywhere.fm</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-18T00:00:00-05:00" pubdate data-updated="true">Dec 18<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>anywhere.fm was my favorite web application.&nbsp; If you weren&#8217;t lucky enough to use it while it was around, it was like a Web-based iTunes.&nbsp; You could upload all of your music to it and then play it from anywhere you had an internet connection and a Flash player.&nbsp;</p><p>The UI bore a strong resemblance to iTunes, but its best UI feature was that everything was fast.&nbsp; Searching for a song in your collection was fast, switching to a new playlist was fast, creating a new playlist was fast.&nbsp; There are very few (maybe GMail?) Web apps where I could do what I wanted to as quickly.</p><p>Their import process had two features that I haven&#8217;t seen anywhere else: a) a convenient desktop app to upload your music in the background and b) the ability to upload <strong>all</strong> of your music.&nbsp; The OS X native app to upload your music worked perfectly for me.&nbsp; It took a few days to get it all, but eventually I had several thousand songs uploaded to anywhere.fm.&nbsp;</p><p>I want to emphasize how happy it made me to have all of my music anywhere I was in front of a computer.</p><p>The anywhere story had a happy ending for the founders, but a sad one for their users.&nbsp; They were bought by imeem, which had an abysmal, sluggish interface and never migrated all of my music.&nbsp; Imeem was then acquired my MySpace Music which claims to have plans to migrate the music from Imeem.&nbsp; But there&#8217;s no chance MySpace will produce anything like anywhere.</p><p>I&#8217;m interested to see what the anywhere founders will build next, but they and YCombinator, the incubator that helped them get started, have lost a bit of my trust.&nbsp; I appreciate their hard work in building anywhere.&nbsp; But I&#8217;d like them to understand what it felt like when anywhere was taken away.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/12/12/the-odds-against-christmas-being-christmas-ar/">The Odds Against Christmas Being Christmas Are Approximately 365 to 1.</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-12-12T00:00:00-05:00" pubdate data-updated="true">Dec 12<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><span style="font-size: 10px;"><object height="344" width="425"><param name="movie" value="http://www.youtube.com/v/IvfunCK3S_o&hl=en_US&fs=1&rel=0" /></param><param name="allowFullScreen" value="true" /></param><param name="allowscriptaccess" value="always" /></param><embed allowfullscreen="true" src="http://www.youtube.com/v/IvfunCK3S_o&hl=en_US&fs=1&rel=0" allowscriptaccess="always" type="application/x-shockwave-flash" height="344" width="425"></embed></object></span></p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/.//page/2/">&larr; Older</a>
@@ -451,11 +451,11 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2011/04/28/philadelphia-emerging-technology-for-the-ente/">Yehuda Katz at Philly ETE - Rails 3.1 Engines</a>
+        <a href="/blog/2010/10/12/polyfills-for-backwards-compatibility/">&#8220;Polyfills&#8221; for backwards compatibility</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2010/10/12/polyfills-for-backwards-compatibility/">&#8220;Polyfills&#8221; for backwards compatibility</a>
+        <a href="/blog/2010/09/24/eventmachine-timers/">EventMachine timers</a>
       </li>
     
   </ul>
