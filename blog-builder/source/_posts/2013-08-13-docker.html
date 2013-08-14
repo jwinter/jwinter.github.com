@@ -25,54 +25,58 @@ half.</p>
 </ul>
 
 <h4>What's a container?</h4>
-<ul> -- It's like a virtual machine
-<li> When your app is running inside a container, it appears to be running inside its own OS
-<li> But there could be many other containers running alongside yours, sharing resources
-<li> It uses a combination of LXC (Linux containers) and AUFS (A union/layered/snapshotting filesystem). I'll talk about both more later
-</ul>
+<p>It's like a virtual machine. When your app is running inside a
+container, it appears to be running inside its own OS But there could
+be many other containers running alongside yours, sharing resources It
+uses a combination of LXC (Linux containers) and AUFS (A
+union/layered/snapshotting filesystem). I'll talk about both more
+later</p>
 
-<pre>
--- They're also a means of packaging
-You can build a container and run it anywhere that can run docker. You
-can share that container with other people and know that it will run
+<p>They're also a means of packaging. You can build a container and
+run it anywhere that can run docker. You can share that container with
+other people and know that it will run the same way.</p>
 
 
-- Why are they useful?
+<h4>Why are they useful?</h4>
 
-* Run your whole damn stack
+<ul>
+<li> Run your whole damn stack<br/>
 Run your Rails app on your laptop by grabbing a container with RVM
-installed, another container with PostgreSQL, another container with Redis,
-another with ElasticSearch or Solr.
-If you've ever tried to run multi-node Vagrant, it's really painful
-and slow to spin up
+installed, another container with PostgreSQL, another container with
+Redis, another with ElasticSearch or Solr.  If you've ever tried to
+run multi-node Vagrant, it's really painful and slow to spin up
 several nodes. Docker makes it very fast and easy
-
-* Reduce dependencies by shipping dependencies inside the container
+</li>
+<li> Reduce dependencies by shipping dependencies inside the container<br/>
 Compile native gems or anything else once inside your container and
 ship that everywhere instead of building on each server
+</li>
+<li> Cut down on configuration errors in production<br/>
+Configure your OS inside the container, build, then snapshot.
+</li>
 
-* Cut down on configuration errors in production
-Configure, build, then snapshot
-
-* They're fast
+<li> They're fast </br>
 Much faster and less resource intensive than VMs.
 As we'll see in the demo, you can spin one up almost instantly.
+</li>
 
-* Deploy Once, Deploy Anywhere
+<li> Deploy Once, Deploy Anywhere
 Once you've built a container, and committed it as an image
 you can run it anywhere
-
-* Let someone else do the work for you
+</li>
+<li>Let someone else do the work for you
 Ability to package and share containers means that you can start from
 a known good ubuntu installation with RVM, like sharing chef cookbooks
+</li>
 
-* Easy to build
+<li>Easy to build
 Make a mistake building your application, no problem,
 every successful step is automatically snapshotted
 If you've ever tried provisioning servers with vagrant you know you're
 almost always starting over every time
-
-
+</li>
+</ul>
+<pre>
 - What does working with containers look like?
 Not sure if this is the demo I'll be doing
 
