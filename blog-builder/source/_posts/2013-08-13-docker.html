@@ -55,105 +55,92 @@ ship that everywhere instead of building on each server
 Configure your OS inside the container, build, then snapshot.
 </li>
 
-<li> They're fast </br>
+<li> They're fast <br/>
 Much faster and less resource intensive than VMs.
 As we'll see in the demo, you can spin one up almost instantly.
 </li>
 
-<li> Deploy Once, Deploy Anywhere
+<li> Deploy Once, Deploy Anywhere<br/>
 Once you've built a container, and committed it as an image
 you can run it anywhere
 </li>
-<li>Let someone else do the work for you
+
+<li>Let someone else do the work for you<br/>
 Ability to package and share containers means that you can start from
 a known good ubuntu installation with RVM, like sharing chef cookbooks
 </li>
 
-<li>Easy to build
+<li>Easy to build<br/>
 Make a mistake building your application, no problem,
 every successful step is automatically snapshotted
 If you've ever tried provisioning servers with vagrant you know you're
 almost always starting over every time
 </li>
 </ul>
-<pre>
-- What does working with containers look like?
-Not sure if this is the demo I'll be doing
 
-Here's me grabbing a base ubuntu container
-Here's me running a basic command inside of that container
-Here's me grabbing the centos container
-Here's me running that same command inside of the centos container
+<h4>What does working with containers look like?</h4>
 
-See an awesome talk about MongoDB tonight and want to try it?
-docker run -i -t damien/mongodb /bin/bash
-mongod
-mongo
-db.isMaster()
-
-Here's me fetching and running elasticsearch with a single command
-
-Here I am building a new Rails app and running it
-Show off docker diff; docker logs; docker attach
-Here I am building another one and running it alongside the first one
-Here I am running 30 of these Rails app on my little MBA
-
-
-- How do containers work?
-
-LXC gives you isolation and control over sharing of resources
-LXC namespaces are what makes each container appear to have its own networking,
+<h4>How do containers work?</h4>
+<h4>LXC</h4>
+<ul>
+<li>LXC gives you isolation and control over sharing of resources
+<li>LXC namespaces are what makes each container appear to have its own networking,
 process table, filesystem mount points, and hostname
-LXC is also how you say: "Give my Rails container 4GB of RAM, but my
-database container 28GB".
-
-It gives you some control over resource management including
+<li>LXC is also how you say: "Give my Rails container 4GB of RAM, but my
+database container 28GB". It gives you some control over resource management including
 IO ops/second and bytes per second.
+</ul>
 
-AUFS
-AUFS, union or "layering" filesystem
-The filesystem layers give each container its own view of the complete
+<h4>AUFS</h4>
+
+<ul>
+<li>AUFS, union or "layering" filesystem
+<li>The filesystem layers give each container its own view of the complete
 filesystem
-Base layer is the OS and is read-only
-Your container is read-write on top
-When you go to do a read, it hits your container first, then reads
+<li>Base layer is the OS and is read-only
+<li>Your container is read-write on top
+<li>When you go to do a read, it hits your container first, then reads
 through to the base if you haven't made any changes
-Your container sits in a layer
-
-Unchanged files are shared
-Buffercache is also shared, so a certain portion of what's shared on
-disk is shared in memory as well.
-This aspect is importants because it improves performance. Storage is
+<li>Unchanged files are shared</li>
+<li>Buffercache is also shared, so a certain portion of what's shared on
+disk is shared in memory as well.</li>
+<li>This aspect is importants because it improves performance. Storage is
 cheap so who really cares that AUFS saves a few gigabytes, but the
 fact that most dynamic libraries (like glibc) are shared across
-containers in memory means that containers spin up very quickly
+containers in memory means that containers spin up very quickly</li>
+</ul>
 
+<h4>Where can I find useful prebuilt containers?</h4>
+<ul>
+<li>https://index.docker.io/</li>
+<li>Search Github for Dockerfiles</li>
+</ul>
 
-- Where can I find useful prebuilt containers?
-https://index.docker.io/
-Search Github for Dockerfiles
-
-- How do I build containers?
-Dockerfile, like a Gemfile but more like a shell script
-You list what image you want to start from, then you list
+<h4>How do I build containers?</h4>
+<ul>
+<li>Dockerfile, like a Gemfile but more like a shell script</li>
+<li>You list what image you want to start from, then you list
 the commands you want to run, files you want to include, ports you
-want to expose
+want to expose</li>
+</ul>
 
-- What are the downsides?
-New, doesn't feel buggy, just not a lot of good answers yet for common
-ops questions like:
-What happens a container crashes or the daemon crashes? How to monitor these?
-Have to run your own repository to share private docker images
+<h4>What are the downsides?</h4>
+<ul>
+<li>New, doesn't feel buggy, just not a lot of good answers yet for common
+ops questions like:</li>
+<li>What happens a container crashes or the daemon crashes? How to monitor these?</li>
+<li>Have to run your own repository to share private docker images</li>
+</ul>
 
-- What's the future?
-Already several platforms like Heroku are popping up to support
-running Docker containers
-Docker 1.0 in the fall
-Like 100 committers on it and they just opensourced it
-I follow some sysadmins that are really heavy into Opscode Chef, and
-Docker is changing how they ship software
-Do MUCH less configuration in Chef, ship almost entirely configured containers
-Test Chef recipes very quickly
-Continuous Integration, test app inside lightweight container, ship
-that container
-</pre>
+
+<h4>What's the future?</h4>
+<ul>
+<li>Already several platforms like Heroku are popping up to support running Docker containers</li>
+<li>Docker 1.0 in the fall</li>
+<li>Like 100 committers on it and they just opensourced it</li>
+<li>Docker is already changning how people ship software</li>
+<li>Do MUCH less configuration in Chef, ship almost entirely configured containers</li>
+<li>Test Chef recipes very quickly with test-kitchen-docker</li>
+<li>Continuous Integration, test app inside lightweight container, ship
+that container</li>
+</ul>
