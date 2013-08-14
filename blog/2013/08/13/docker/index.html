@@ -101,26 +101,26 @@ half.</p>
 
 <p>These are my speech notes</p>
 
-<pre>What's Docker?
+<h3>What&#8217;s Docker?</h3>
 
-3 things I'd like you to take from this talk:
-- Docker provides a lot of the advantages of virtual machines without the disadvantages
-- Container-based deployment is a great way to deploy applications
-- AUFS and LXC are the chocolate and peanut butter that makes Docker so great to use
+<h4>3 things I&#8217;d like you to take from this talk:</h4>
+<ul>
+<li> Docker provides a lot of the advantages of virtual machines without the disadvantages
+<li> Container-based deployment is a great way to deploy applications
+<li> AUFS and LXC are the chocolate and peanut butter that makes Docker so great to use
+</ul>
 
+<h4>What&#8217;s a container?</h4>
+<ul> &#8211; It&#8217;s like a virtual machine
+<li> When your app is running inside a container, it appears to be running inside its own OS
+<li> But there could be many other containers running alongside yours, sharing resources
+<li> It uses a combination of LXC (Linux containers) and AUFS (A union/layered/snapshotting filesystem). I&#8217;ll talk about both more later
+</ul>
 
-- What's a container?
-*It's like a virtual machine
-When your app is running inside a container, it appears to be running
-inside its own OS
-But there could be many other containers running alongside yours,
-sharing resources
-It uses a combination of LXC (Linux containers) and AUFS (A
-union/layered/snapshotting filesystem)
-I'll talk about both more later
-*They're also a means of packaging; you can build a container and run
-it anywhere that can run docker
-You can share that container with other people and know that it will run
+<pre>
+-- They're also a means of packaging
+You can build a container and run it anywhere that can run docker. You
+can share that container with other people and know that it will run
 
 
 - Why are they useful?
