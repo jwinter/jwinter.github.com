@@ -2,66 +2,66 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://jwinter.org/blog/2009/04/21/jogl-and-clojure/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://jwinter.org/blog/2009/12/12/the-odds-against-christmas-being-christmas-ar/
         </loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2009/12/18/i-miss-anywherefm/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2009/12/20/the-dough-was-for-me/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2009/12/24/james-brown-loves-you/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2010/05/23/emacs-ansi-term-and-screen/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2010/09/24/eventmachine-timers/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2010/10/12/polyfills-for-backwards-compatibility/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>
             http://jwinter.org/blog/2012/05/27/setting-up-a-new-macbook-pro-for-ruby-ror-dev/
         </loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2012/10/16/stubbing-http-apis-with-vcr/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2013/01/18/advice-for-personal-projects/</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/2013/08/13/docker/</loc>
-        <lastmod>2013-08-13T20:46:02-04:00</lastmod>
+        <lastmod>2013-08-19T13:54:50-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/blog/archives/</loc>
-        <lastmod>2013-08-13T20:46:02-04:00</lastmod>
+        <lastmod>2013-08-19T13:54:50-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/</loc>
-        <lastmod>2013-08-13T20:46:02-04:00</lastmod>
+        <lastmod>2013-08-19T13:54:50-04:00</lastmod>
     </url>
     <url>
         <loc>http://jwinter.org/blog/robots.txt</loc>
-        <lastmod>2013-03-03T08:14:08-05:00</lastmod>
+        <lastmod>2013-08-19T13:33:56-04:00</lastmod>
     </url>
 </urlset>

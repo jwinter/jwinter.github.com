@@ -4,7 +4,7 @@
   <title><![CDATA[jwinter.org]]></title>
   <link href="http://jwinter.org/blog/atom.xml" rel="self"/>
   <link href="http://jwinter.org/blog/"/>
-  <updated>2013-08-13T20:46:11-04:00</updated>
+  <updated>2013-08-19T15:20:46-04:00</updated>
   <id>http://jwinter.org/blog/</id>
   <author>
     <name><![CDATA[Joe W.]]></name>
@@ -18,13 +18,11 @@
     <link href="http://jwinter.org/blog/2013/08/13/docker/"/>
     <updated>2013-08-13T00:00:00-04:00</updated>
     <id>http://jwinter.org/blog/2013/08/13/docker</id>
-    <content type="html"><![CDATA[<p>I gave a short talk on <a href="http://jwinter.org/blog//docker.io">Docker</a>
-at <a href="http://jwinter.org/blog//phillyrb.org">PhillyRB</a>&#8217;s August
-meeting.  <a href="http://jwinter.org/blog//slideshare.net/jwatnj/docker">These were my
+    <content type="html"><![CDATA[<p>I gave a short talk on <a href="http://docker.io">Docker</a>
+at <a href="http://phillyrb.org">PhillyRB</a>&#8217;s August
+meeting.  <a href="http://slideshare.net/jwatnj/docker">These were my
 slides</a>, although I went way off of them and only got through about
-half.</p>
-
-<p>These are my speech notes</p>
+half. What follows are the notes I used for my talk.</p>
 
 <h3>What&#8217;s Docker?</h3>
 
@@ -37,9 +35,9 @@ half.</p>
 
 <h4>What&#8217;s a container?</h4>
 <p>It&#8217;s like a virtual machine. When your app is running inside a
-container, it appears to be running inside its own OS But there could
-be many other containers running alongside yours, sharing resources It
-uses a combination of LXC (Linux containers) and AUFS (A
+container, it appears to be running inside its own OS. But there could
+be many other containers running alongside yours, all sharing
+resources. It uses a combination of LXC (Linux containers) and AUFS (A
 union/layered/snapshotting filesystem). I&#8217;ll talk about both more
 later</p>
 
@@ -56,14 +54,14 @@ Run your Rails app on your laptop by grabbing a container with RVM
 installed, another container with PostgreSQL, another container with
 Redis, another with ElasticSearch or Solr.  If you&#8217;ve ever tried to
 run multi-node Vagrant, it&#8217;s really painful and slow to spin up
-several nodes. Docker makes it very fast and easy
+several nodes. Docker makes it very fast and easy.
 </li>
 <li> Reduce dependencies by shipping dependencies inside the container<br/>
 Compile native gems or anything else once inside your container and
-ship that everywhere instead of building on each server
+ship that everywhere instead of building on each server.
 </li>
 <li> Cut down on configuration errors in production<br/>
-Configure your OS inside the container, build, then snapshot.
+Configure your OS inside the container then snapshot.
 </li>
 
 <li> They&#8217;re fast <br/>
@@ -76,20 +74,22 @@ Once you&#8217;ve built a container, and committed it as an image
 you can run it anywhere
 </li>
 
-<li>Let someone else do the work for you<br/>
-Ability to package and share containers means that you can start from
-a known good ubuntu installation with RVM, like sharing chef cookbooks
+<li>Let someone else do the work for you<br/> 
+The ability to package and share containers means that you can use
+someone else&#8217;s work to start from a known functional state. It&#8217;s like
+sharing chef cookbooks.
 </li>
 
 <li>Easy to build<br/>
 Make a mistake building your application, no problem,
-every successful step is automatically snapshotted
-If you&#8217;ve ever tried provisioning servers with vagrant you know you&#8217;re
-almost always starting over every time
+every successful step is automatically snapshotted.
+If you&#8217;ve ever tried provisioning VMs with vagrant you know you&#8217;re
+almost always starting over every time.
 </li>
 </ul>
 
 <h4>What does working with containers look like?</h4>
+<p>Demo goes here.</p>
 
 <h4>How do containers work?</h4>
 <h4>LXC</h4>
@@ -116,9 +116,9 @@ through to the base if you haven&#8217;t made any changes
 <li>Buffercache is also shared, so a certain portion of what&#8217;s shared on
 disk is shared in memory as well.</li>
 <li>This aspect is importants because it improves performance. Storage is
-cheap so who really cares that AUFS saves a few gigabytes, but the
-fact that most dynamic libraries (like glibc) are shared across
-containers in memory means that containers spin up very quickly</li>
+cheap, so who really cares that AUFS saves a few gigabytes, but the
+fact that many dynamic libraries are shared across
+containers in memory means that containers spin up very quickly.</li>
 </ul>
 
 <h4>Where can I find useful prebuilt containers?</h4>
@@ -137,9 +137,8 @@ want to expose</li>
 
 <h4>What are the downsides?</h4>
 <ul>
-<li>New, doesn&#8217;t feel buggy, just not a lot of good answers yet for common
-ops questions like:</li>
-<li>What happens a container crashes or the daemon crashes? How to monitor these?</li>
+<li>It&#8217;s very new, but doesn&#8217;t feel buggy. There&#8217;s just not a lot of good answers yet for common
+ops questions like what happens a container crashes or the daemon crashes or how to monitor?</li>
 <li>Have to run your own repository to share private docker images</li>
 </ul>
 
@@ -149,7 +148,7 @@ ops questions like:</li>
 <li>Already several platforms like Heroku are popping up to support running Docker containers</li>
 <li>Docker 1.0 in the fall</li>
 <li>Like 100 committers on it and they just opensourced it</li>
-<li>Docker is already changning how people ship software</li>
+<li>Docker is already changing how people ship software</li>
 <li>Do MUCH less configuration in Chef, ship almost entirely configured containers</li>
 <li>Test Chef recipes very quickly with test-kitchen-docker</li>
 <li>Continuous Integration, test app inside lightweight container, ship
