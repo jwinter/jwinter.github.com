@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Code Review jwinter-style - jwinter.org</title>
+  <meta name="author" content="Joe W.">
+
+  
+  <meta name="description" content="Code Review @jwinter-style I really enjoy reviewing code. I think it&#8217;s mostly because I enjoy listening and talking to people about programming &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://jwinter.org/blog/2014/10/31/code-review-jwinter-style/">
+  <link href="/blog/favicon.png" rel="icon">
+  <link href="/blog/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/blog/javascripts/modernizr-2.0.js"></script>
+  <script src="/blog/javascripts/ender.js"></script>
+  <script src="/blog/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="./atom.xml" rel="alternate" title="jwinter.org" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/blog/">jwinter.org</a></h1>
+  
+    <h2>The more you know</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="./atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:jwinter.org/blog" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/blog/">Blog</a></li>
+  <li><a href="/blog/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Code Review Jwinter-style</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-31T00:00:00-04:00" pubdate data-updated="true">Oct 31<span>st</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1>Code Review @jwinter-style</h1>
+
+<p>I really enjoy reviewing code. I think it&#8217;s mostly because I enjoy listening  and talking to people about programming. So here are some thoughts of my rambling thoughts on reviewing code.</p>
+
+<p>First, I <strong>try to be cognizant of other people&#8217;s feelings during code review</strong>. It&#8217;s easy to sound rude by giving curt, negative feedback. Sometimes it takes more time to reword a comment in more sensitive language. I&#8217;ve never regretted taking the time to do that. I have regretted hastily sending off a comment that sounds like a jerk wrote it.</p>
+
+<p>Speaking of which, there have been times where following my feedback would have <strong>absolutely</strong> resulted in a change for the worse. If you review code long enough and have a modicum of self-awareness, this will also happen to you. Be prepared for it and let the author and other reviewers know when you change your mind.</p>
+
+<p>I also try to respect the author of the pull request by doing the following (and sometimes I screw this up):
+* Point out what they&#8217;ve done great! Everybody forgets this one! Why don&#8217;t you do this?!
+* Phrase refactoring suggestions as suggestions. Rarely, I &#8220;very strongly&#8221; suggest a refactoring, but even in that case I try to say so in a way that respects the work that&#8217;s already gone into this change.
+* Ask before I add commits to their pull request. If I don&#8217;t get a response quickly, I&#8217;ll generally just put some sample code into my comments to show what I&#8217;m suggesting.
+* Provide performance specifics. When I think the code is too slow, instead of just saying something like &#8220;This looks too slow&#8221;, I&#8217;ll try to provide specific numbers or offer help in profiling.
+* OFFER HELP! I&#8217;ll offer to pair on something during or after a review.
+* When I do think the code needs reworking, I either provide a specific way to improve the code or have one in mind. I won&#8217;t always suggest a specific change because that often narrows the author&#8217;s thinking on how to make an improvement.</p>
+
+<p>So here are the actual steps I go through.</p>
+
+<p>First, I <strong>check out the branch to review in my local git repo</strong>. If you don&#8217;t check out the branch you&#8217;re reviewing locally, I&#8217;m not really sure how you can provide a close review. There&#8217;s several important steps below that you just can&#8217;t do by looking at the code on Github alone.</p>
+
+<p>Next, if the branch won&#8217;t merge cleanly, I&#8217;ll rebase it locally (and not push my changes) before starting this process. If there are a lot of merge conflicts, I&#8217;ll ask for the author to merge master into this branch or rebase it on master, or whatever they prefer to get it closer to our master branch.</p>
+
+<p><strong>Then, I run our entire test suite (unit, functional, integration, whatever) locally.</strong> Some may be wondering why I just don&#8217;t just let our continuous integration server run the tests on the branch. I run tests locally, in addition to the CI server, because once this code passes review, it will be the new master branch. And I will be using that immediately in whatever I&#8217;m working on. So if my local dev environment is going to start failing tests, I want to know as soon as possible. It&#8217;s also a great time to ask for help because the person sending the pull request still has the code fresh in their mind and is especially motivated to get the change through.</p>
+
+<p>While the tests are running, I read the diffs on Github. <strong>I like to look at the whole diff across all files.</strong> If it&#8217;s a particularly large or complicated pull request, I may drill into specific commits. But I don&#8217;t really care which commit a particular change came from, since I&#8217;m not reviewing that commit I&#8217;m reviewing the whole branch.</p>
+
+<p><strong>Some quick things I look for on my first pass:</strong>
+* Any change where there&#8217;s not a corresponding change in test code
+* New methods or variables that go unused
+* Anything that doesn&#8217;t match our (implicit or explict) style guide
+* Anything that reminds me of a bug I&#8217;ve hit before. An example here might be using ||= for memoization in Ruby.
+* Any goddamn trailing whitespace
+* Anything that I want to take a closer look at</p>
+
+<p>Things that fall under that last bullet would be any change in data structure, any new data structures, any change in logic or addition of new logic, etc. Basically anything other than the simplest 1-2 line change where only I could screw it up, I&#8217;ll want to take a closer look at.</p>
+
+<p>After that first pass, I&#8217;ll either be just about done if it&#8217;s a small change or ready to start taking a closer look at the bits I&#8217;ve identified from the first pass.</p>
+
+<p>This is the point where I usually <strong>read the request that spawned this change</strong> (bug report/feature request/bar napkin) and then <strong>actually use the new feature or attempt to repro the bug</strong>. I don&#8217;t think most people do this, based on how many garbage features or unfixed bugs I&#8217;ve shipped that my co-workers have happily +1ed. This is a really important step, maybe the most important, so please actually run the code that you&#8217;re reviewing.</p>
+
+<p><strong>Now, when taking a closer look, I&#8217;ll do any combination of the following:</strong>
+* Think about how the change will run in production.
+* Reverse their logic and make sure the right tests fail.
+* Drop into the debugger and walk through the code to see if it runs how I expect.
+* Copy their code into a REPL and make sure it does what I think it&#8217;s supposed to.
+* Walk back up call stack to see if any of the arguments expected to be one type are actually of that type, e.g. non-null, array, etc.
+* Write (or run an existing) load or stress test.</p>
+
+<p>And <strong>before I finally +1 the change I check that:</strong>
+* Every comment I&#8217;ve made has been responded to, either with code or with a discussion.
+* All tests pass locally.
+* Any new ideas or features that have come out of review are tracked somewhere.
+* It merges cleanly. I&#8217;ve seen enough bugs introduced during merge resolution that I&#8217;ll ask folks to merge master or rebase before completing my review.</p>
+
+<p>So what&#8217;s above is what I use to help me improve the code I look at. I&#8217;m very interested in what helps others do the same. <strong>Get at me at <a href="https://twitter.com/jwinter">@jwinter on twitter</a> if you&#8217;ve got feedback on this.</strong> I&#8217;d love to hear it.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Joe W.</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-10-31T00:00:00-04:00" pubdate data-updated="true">Oct 31<span>st</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://jwinter.org/blog/2014/10/31/code-review-jwinter-style/" data-via="jwinter" data-counturl="http://jwinter.org/blog/2014/10/31/code-review-jwinter-style/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/08/19/docker-resources/" title="Previous Post: Docker Resources">&laquo; Docker Resources</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/10/31/code-review-jwinter-style/">Code Review jwinter-style</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/19/docker-resources/">Docker Resources</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/08/13/docker/">A Short Talk on Docker</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/01/18/advice-for-personal-projects/">Advice for Personal Projects</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/10/16/stubbing-http-apis-with-vcr/">Stubbing HTTP APIs with VCR</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/jwinter">@jwinter</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'jwinter',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/blog/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("jwinter", 4, false);
+    });
+  </script>
+  <script src="/blog/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/jwinter" class="twitter-follow-button" data-show-count="false">Follow @jwinter</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - Joe W. -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

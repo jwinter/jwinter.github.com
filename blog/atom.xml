@@ -4,7 +4,7 @@
   <title><![CDATA[jwinter.org]]></title>
   <link href="http://jwinter.org/blog/atom.xml" rel="self"/>
   <link href="http://jwinter.org/blog/"/>
-  <updated>2013-08-19T15:20:46-04:00</updated>
+  <updated>2014-11-02T22:01:41-05:00</updated>
   <id>http://jwinter.org/blog/</id>
   <author>
     <name><![CDATA[Joe W.]]></name>
@@ -14,14 +14,96 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Code Review jwinter-style]]></title>
+    <link href="http://jwinter.org/blog/2014/10/31/code-review-jwinter-style/"/>
+    <updated>2014-10-31T00:00:00-04:00</updated>
+    <id>http://jwinter.org/blog/2014/10/31/code-review-jwinter-style</id>
+    <content type="html"><![CDATA[<h1>Code Review @jwinter-style</h1>
+
+<p>I really enjoy reviewing code. I think it&#8217;s mostly because I enjoy listening  and talking to people about programming. So here are some thoughts of my rambling thoughts on reviewing code.</p>
+
+<p>First, I <strong>try to be cognizant of other people&#8217;s feelings during code review</strong>. It&#8217;s easy to sound rude by giving curt, negative feedback. Sometimes it takes more time to reword a comment in more sensitive language. I&#8217;ve never regretted taking the time to do that. I have regretted hastily sending off a comment that sounds like a jerk wrote it.</p>
+
+<p>Speaking of which, there have been times where following my feedback would have <strong>absolutely</strong> resulted in a change for the worse. If you review code long enough and have a modicum of self-awareness, this will also happen to you. Be prepared for it and let the author and other reviewers know when you change your mind.</p>
+
+<p>I also try to respect the author of the pull request by doing the following (and sometimes I screw this up):
+* Point out what they&#8217;ve done great! Everybody forgets this one! Why don&#8217;t you do this?!
+* Phrase refactoring suggestions as suggestions. Rarely, I &#8220;very strongly&#8221; suggest a refactoring, but even in that case I try to say so in a way that respects the work that&#8217;s already gone into this change.
+* Ask before I add commits to their pull request. If I don&#8217;t get a response quickly, I&#8217;ll generally just put some sample code into my comments to show what I&#8217;m suggesting.
+* Provide performance specifics. When I think the code is too slow, instead of just saying something like &#8220;This looks too slow&#8221;, I&#8217;ll try to provide specific numbers or offer help in profiling.
+* OFFER HELP! I&#8217;ll offer to pair on something during or after a review.
+* When I do think the code needs reworking, I either provide a specific way to improve the code or have one in mind. I won&#8217;t always suggest a specific change because that often narrows the author&#8217;s thinking on how to make an improvement.</p>
+
+<p>So here are the actual steps I go through.</p>
+
+<p>First, I <strong>check out the branch to review in my local git repo</strong>. If you don&#8217;t check out the branch you&#8217;re reviewing locally, I&#8217;m not really sure how you can provide a close review. There&#8217;s several important steps below that you just can&#8217;t do by looking at the code on Github alone.</p>
+
+<p>Next, if the branch won&#8217;t merge cleanly, I&#8217;ll rebase it locally (and not push my changes) before starting this process. If there are a lot of merge conflicts, I&#8217;ll ask for the author to merge master into this branch or rebase it on master, or whatever they prefer to get it closer to our master branch.</p>
+
+<p><strong>Then, I run our entire test suite (unit, functional, integration, whatever) locally.</strong> Some may be wondering why I just don&#8217;t just let our continuous integration server run the tests on the branch. I run tests locally, in addition to the CI server, because once this code passes review, it will be the new master branch. And I will be using that immediately in whatever I&#8217;m working on. So if my local dev environment is going to start failing tests, I want to know as soon as possible. It&#8217;s also a great time to ask for help because the person sending the pull request still has the code fresh in their mind and is especially motivated to get the change through.</p>
+
+<p>While the tests are running, I read the diffs on Github. <strong>I like to look at the whole diff across all files.</strong> If it&#8217;s a particularly large or complicated pull request, I may drill into specific commits. But I don&#8217;t really care which commit a particular change came from, since I&#8217;m not reviewing that commit I&#8217;m reviewing the whole branch.</p>
+
+<p><strong>Some quick things I look for on my first pass:</strong>
+* Any change where there&#8217;s not a corresponding change in test code
+* New methods or variables that go unused
+* Anything that doesn&#8217;t match our (implicit or explict) style guide
+* Anything that reminds me of a bug I&#8217;ve hit before. An example here might be using ||= for memoization in Ruby.
+* Any goddamn trailing whitespace
+* Anything that I want to take a closer look at</p>
+
+<p>Things that fall under that last bullet would be any change in data structure, any new data structures, any change in logic or addition of new logic, etc. Basically anything other than the simplest 1-2 line change where only I could screw it up, I&#8217;ll want to take a closer look at.</p>
+
+<p>After that first pass, I&#8217;ll either be just about done if it&#8217;s a small change or ready to start taking a closer look at the bits I&#8217;ve identified from the first pass.</p>
+
+<p>This is the point where I usually <strong>read the request that spawned this change</strong> (bug report/feature request/bar napkin) and then <strong>actually use the new feature or attempt to repro the bug</strong>. I don&#8217;t think most people do this, based on how many garbage features or unfixed bugs I&#8217;ve shipped that my co-workers have happily +1ed. This is a really important step, maybe the most important, so please actually run the code that you&#8217;re reviewing.</p>
+
+<p><strong>Now, when taking a closer look, I&#8217;ll do any combination of the following:</strong>
+* Think about how the change will run in production.
+* Reverse their logic and make sure the right tests fail.
+* Drop into the debugger and walk through the code to see if it runs how I expect.
+* Copy their code into a REPL and make sure it does what I think it&#8217;s supposed to.
+* Walk back up call stack to see if any of the arguments expected to be one type are actually of that type, e.g. non-null, array, etc.
+* Write (or run an existing) load or stress test.</p>
+
+<p>And <strong>before I finally +1 the change I check that:</strong>
+* Every comment I&#8217;ve made has been responded to, either with code or with a discussion.
+* All tests pass locally.
+* Any new ideas or features that have come out of review are tracked somewhere.
+* It merges cleanly. I&#8217;ve seen enough bugs introduced during merge resolution that I&#8217;ll ask folks to merge master or rebase before completing my review.</p>
+
+<p>So what&#8217;s above is what I use to help me improve the code I look at. I&#8217;m very interested in what helps others do the same. <strong>Get at me at <a href="https://twitter.com/jwinter">@jwinter on twitter</a> if you&#8217;ve got feedback on this.</strong> I&#8217;d love to hear it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Docker Resources]]></title>
+    <link href="http://jwinter.org/blog/2013/08/19/docker-resources/"/>
+    <updated>2013-08-19T00:00:00-04:00</updated>
+    <id>http://jwinter.org/blog/2013/08/19/docker-resources</id>
+    <content type="html"><![CDATA[More background on Docker:
+http://www.docker.io/the-whole-story/
+
+Their very cool Interactive Tutorial:
+https://www.docker.io/gettingstarted/
+
+Installation via vagrant:
+http://docs.docker.io/en/latest/installation/vagrant/
+
+dotCloud (creators of Docker) had a series of blog posts on building a PaaS that included ones on LXC and AUFS:
+http://blog.dotcloud.com/under-the-hood-linux-kernels-on-dotcloud-part
+http://blog.dotcloud.com/kernel-secrets-from-the-paas-garage-part-34-a
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[A Short Talk on Docker]]></title>
     <link href="http://jwinter.org/blog/2013/08/13/docker/"/>
     <updated>2013-08-13T00:00:00-04:00</updated>
     <id>http://jwinter.org/blog/2013/08/13/docker</id>
     <content type="html"><![CDATA[<p>I gave a short talk on <a href="http://docker.io">Docker</a>
 at <a href="http://phillyrb.org">PhillyRB</a>&#8217;s August
-meeting.  <a href="http://slideshare.net/jwatnj/docker">These were my
-slides</a>, although I went way off of them and only got through about
+meeting.  <a href="http://slideshare.net/jwatnj/docker">These were my slides</a>, although I went way off of them and only got through about
 half. What follows are the notes I used for my talk.</p>
 
 <h3>What&#8217;s Docker?</h3>
