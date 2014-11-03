@@ -10,7 +10,7 @@ meta: {}
 
 I really enjoy reviewing code. I think it's mostly because I enjoy listening  and talking to people about programming. So here are some thoughts of my rambling thoughts on reviewing code.
 
-First, I **try to be cognizant of other people's feelings during code review**. It's easy to sound rude by giving curt, negative feedback. Sometimes it takes more time to reword a comment in more sensitive language. I've never regretted taking the time to do that. I have regretted hastily sending off a comment that sounds like a jerk wrote it.
+First, I **try to be cognizant of other people's feelings during code review**. It's easy to be rude by giving curt, negative feedback. Sometimes it takes more time to reword a comment in more sensitive language. I've never regretted taking the time to do that. I have regretted hastily sending off a comment that sounds like a jerk wrote it.
 
 Speaking of which, there have been times where following my feedback would have **absolutely** resulted in a change for the worse. If you review code long enough and have a modicum of self-awareness, this will also happen to you. Be prepared for it and let the author and other reviewers know when you change your mind.
 
