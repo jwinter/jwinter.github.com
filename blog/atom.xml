@@ -4,7 +4,7 @@
   <title><![CDATA[jwinter.org]]></title>
   <link href="http://jwinter.org/blog/atom.xml" rel="self"/>
   <link href="http://jwinter.org/blog/"/>
-  <updated>2014-11-02T22:23:28-05:00</updated>
+  <updated>2014-11-02T22:25:11-05:00</updated>
   <id>http://jwinter.org/blog/</id>
   <author>
     <name><![CDATA[Joe W.]]></name>
@@ -26,14 +26,14 @@
 
 <p>I also try to respect the author of the pull request by doing the following (and sometimes I screw this up):</p>
 
-<ul>
+<ol>
 <li>Point out what they&#8217;ve done great! Everybody forgets this one! Why don&#8217;t you do this?!</li>
 <li>Phrase refactoring suggestions as suggestions. Rarely, I &#8220;very strongly&#8221; suggest a refactoring, but even in that case I try to say so in a way that respects the work that&#8217;s already gone into this change.</li>
 <li>Ask before I add commits to their pull request. If I don&#8217;t get a response quickly, I&#8217;ll generally just put some sample code into my comments to show what I&#8217;m suggesting.</li>
 <li>Provide performance specifics. When I think the code is too slow, instead of just saying something like &#8220;This looks too slow&#8221;, I&#8217;ll try to provide specific numbers or offer help in profiling.</li>
 <li>OFFER HELP! I&#8217;ll offer to pair on something during or after a review.</li>
 <li>When I do think the code needs reworking, I either provide a specific way to improve the code or have one in mind. I won&#8217;t always suggest a specific change because that often narrows the author&#8217;s thinking on how to make an improvement.</li>
-</ul>
+</ol>
 
 
 <p>So here are the actual steps I go through.</p>
@@ -48,14 +48,14 @@
 
 <p><strong>Some quick things I look for on my first pass:</strong></p>
 
-<ul>
+<ol>
 <li>Any change where there&#8217;s not a corresponding change in test code</li>
 <li>New methods or variables that go unused</li>
 <li>Anything that doesn&#8217;t match our (implicit or explict) style guide</li>
-<li>Anything that reminds me of a bug I&#8217;ve hit before. An example here might be using ||= for memoization in Ruby.</li>
+<li>Anything that reminds me of a bug I&#8217;ve hit before. An example here might be using ||= for memoiztion in Ruby.</li>
 <li>Any goddamn trailing whitespace</li>
 <li>Anything that I want to take a closer look at</li>
-</ul>
+</ol>
 
 
 <p>Things that fall under that last bullet would be any change in data structure, any new data structures, any change in logic or addition of new logic, etc. Basically anything other than the simplest 1-2 line change where only I could screw it up, I&#8217;ll want to take a closer look at.</p>
@@ -66,24 +66,24 @@
 
 <p><strong>Now, when taking a closer look, I&#8217;ll do any combination of the following:</strong></p>
 
-<ul>
+<ol>
 <li>Think about how the change will run in production.</li>
 <li>Reverse their logic and make sure the right tests fail.</li>
 <li>Drop into the debugger and walk through the code to see if it runs how I expect.</li>
 <li>Copy their code into a REPL and make sure it does what I think it&#8217;s supposed to.</li>
 <li>Walk back up call stack to see if any of the arguments expected to be one type are actually of that type, e.g. non-null, array, etc.</li>
 <li>Write (or run an existing) load or stress test.</li>
-</ul>
+</ol>
 
 
 <p>And <strong>before I finally +1 the change I check that:</strong></p>
 
-<ul>
+<ol>
 <li>Every comment I&#8217;ve made has been responded to, either with code or with a discussion.</li>
 <li>All tests pass locally.</li>
 <li>Any new ideas or features that have come out of review are tracked somewhere.</li>
 <li>It merges cleanly. I&#8217;ve seen enough bugs introduced during merge resolution that I&#8217;ll ask folks to merge master or rebase before completing my review.</li>
-</ul>
+</ol>
 
 
 <p>So what&#8217;s above is what I use to help me improve the code I look at. I&#8217;m very interested in what helps others do the same. <strong>Get at me at <a href="https://twitter.com/jwinter">@jwinter on twitter</a> if you&#8217;ve got feedback on this.</strong> I&#8217;d love to hear it.</p>
