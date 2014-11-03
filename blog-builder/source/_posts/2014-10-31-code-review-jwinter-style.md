@@ -15,6 +15,7 @@ First, I **try to be cognizant of other people's feelings during code review**. 
 Speaking of which, there have been times where following my feedback would have **absolutely** resulted in a change for the worse. If you review code long enough and have a modicum of self-awareness, this will also happen to you. Be prepared for it and let the author and other reviewers know when you change your mind.
 
 I also try to respect the author of the pull request by doing the following (and sometimes I screw this up):
+
 * Point out what they've done great! Everybody forgets this one! Why don't you do this?!
 * Phrase refactoring suggestions as suggestions. Rarely, I "very strongly" suggest a refactoring, but even in that case I try to say so in a way that respects the work that's already gone into this change.
 * Ask before I add commits to their pull request. If I don't get a response quickly, I'll generally just put some sample code into my comments to show what I'm suggesting.
@@ -33,6 +34,7 @@ Next, if the branch won't merge cleanly, I'll rebase it locally (and not push my
 While the tests are running, I read the diffs on Github. **I like to look at the whole diff across all files.** If it's a particularly large or complicated pull request, I may drill into specific commits. But I don't really care which commit a particular change came from, since I'm not reviewing that commit I'm reviewing the whole branch. 
 
 **Some quick things I look for on my first pass:**
+
 * Any change where there's not a corresponding change in test code
 * New methods or variables that go unused
 * Anything that doesn't match our (implicit or explict) style guide
@@ -47,6 +49,7 @@ After that first pass, I'll either be just about done if it's a small change or 
 This is the point where I usually **read the request that spawned this change** (bug report/feature request/bar napkin) and then **actually use the new feature or attempt to repro the bug**. I don't think most people do this, based on how many garbage features or unfixed bugs I've shipped that my co-workers have happily +1ed. This is a really important step, maybe the most important, so please actually run the code that you're reviewing.
 
 **Now, when taking a closer look, I'll do any combination of the following:**
+
 * Think about how the change will run in production.
 * Reverse their logic and make sure the right tests fail.
 * Drop into the debugger and walk through the code to see if it runs how I expect.
@@ -56,6 +59,7 @@ This is the point where I usually **read the request that spawned this change** 
 
 
 And **before I finally +1 the change I check that:**
+
 * Every comment I've made has been responded to, either with code or with a discussion.
 * All tests pass locally.
 * Any new ideas or features that have come out of review are tracked somewhere.
