@@ -1,14 +1,12 @@
 ---
 layout: post
-title: Code Review jwinter-style
+title: Code Reviews @jwinter-style
 tags: []
 status: publish
 type: post
 published: true
 meta: {}
 ---
-
-# Code Review @jwinter-style
 
 I really enjoy reviewing code. I think it's mostly because I enjoy listening  and talking to people about programming. So here are some thoughts of my rambling thoughts on reviewing code.
 
