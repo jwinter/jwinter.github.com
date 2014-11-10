@@ -16,7 +16,7 @@ Speaking of which, there have been times where following my feedback would have 
 
 I also try to respect the author of the pull request by doing the following (and sometimes I screw this up):
 
-1. Point out what they've done great! Everybody forgets this one! Why don't you do this?!
+1. Point out what they've done well! Everybody forgets this one! Why don't you do this?!
 1. Phrase refactoring suggestions as suggestions. Rarely, I "very strongly" suggest a refactoring, but even in that case I try to say so in a way that respects the work that's already gone into this change.
 1. Ask before I add commits to their pull request. If I don't get a response quickly, I'll generally just put some sample code into my comments to show what I'm suggesting.
 1. Provide performance specifics. When I think the code is too slow, instead of just saying something like "This looks too slow", I'll try to provide specific numbers or offer help in profiling.
@@ -38,8 +38,8 @@ While the tests are running, I read the diffs on Github. **I like to look at the
 1. Any change where there's not a corresponding change in test code
 1. New methods or variables that go unused
 1. Anything that doesn't match our (implicit or explict) style guide
-1. Anything that reminds me of a bug I've hit before. An example here might be using ||= for memoiztion in Ruby.
-* Any goddamn trailing whitespace
+1. Anything that reminds me of a bug I've hit before. An example here might be using ||= for memoization in Ruby.
+1. Any goddamn trailing whitespace
 1. Anything that I want to take a closer look at
 
 Things that fall under that last bullet would be any change in data structure, any new data structures, any change in logic or addition of new logic, etc. Basically anything other than the simplest 1-2 line change where only I could screw it up, I'll want to take a closer look at.
@@ -63,6 +63,6 @@ And **before I finally +1 the change I check that:**
 1. Every comment I've made has been responded to, either with code or with a discussion.
 1. All tests pass locally.
 1. Any new ideas or features that have come out of review are tracked somewhere.
-1. It merges cleanly. I've seen enough bugs introduced during merge resolution that I'll ask folks to merge master or rebase before completing my review.
+1. It still merges cleanly. I've seen enough bugs introduced during merge resolution that I'll ask folks to merge master or rebase before completing my review.
 
 So what's above is what I use to help me improve the code I look at. I'm very interested in what helps others do the same. **Get at me at [@jwinter on twitter](https://twitter.com/jwinter) if you've got feedback on this.** I'd love to hear it.
