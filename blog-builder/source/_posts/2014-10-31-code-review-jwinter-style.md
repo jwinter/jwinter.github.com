@@ -8,7 +8,7 @@ published: true
 meta: {}
 ---
 
-I really enjoy reviewing code. I think it's mostly because I enjoy listening  and talking to people about programming. So here are some thoughts of my rambling thoughts on reviewing code.
+I really enjoy reviewing code. I think it's mostly because I enjoy listening and talking to people about programming. So here are some thoughts of my rambling thoughts on reviewing code.
 
 First, I **try to be cognizant of other people's feelings during code review**. It's easy to be rude by giving curt, negative feedback. Sometimes it takes more time to reword a comment in more sensitive language. I've never regretted taking the time to do that. I have regretted hastily sending off a comment that sounds like a jerk wrote it.
 
@@ -21,7 +21,7 @@ I also try to respect the author of the pull request by doing the following (and
 1. Ask before I add commits to their pull request. If I don't get a response quickly, I'll generally just put some sample code into my comments to show what I'm suggesting.
 1. Provide performance specifics. When I think the code is too slow, instead of just saying something like "This looks too slow", I'll try to provide specific numbers or offer help in profiling.
 1. OFFER HELP! I'll offer to pair on something during or after a review.
-1. When I do think the code needs reworking, I either provide a specific way to improve the code or have one in mind. I won't always suggest a specific change because that often narrows the author's thinking on how to make an improvement.
+1. When I do think the code needs reworking, I either provide a specific way to improve the code or have one in mind. I won't always offer the change I have in mind because that sometimes narrows the author's thinking on how to make an improvement.
 
 So here are the actual steps I go through.
 
@@ -38,7 +38,7 @@ While the tests are running, I read the diffs on Github. **I like to look at the
 1. Any change where there's not a corresponding change in test code
 1. New methods or variables that go unused
 1. Anything that doesn't match our (implicit or explict) style guide
-1. Anything that reminds me of a bug I've hit before. An example here might be using ||= for memoization in Ruby.
+1. Anything that reminds me of a bug I've hit before. An example here might be using ||= for memoization in Ruby
 1. Any goddamn trailing whitespace
 1. Anything that I want to take a closer look at
 
@@ -55,7 +55,7 @@ This is the point where I usually **read the request that spawned this change** 
 1. Drop into the debugger and walk through the code to see if it runs how I expect.
 1. Copy their code into a REPL and make sure it does what I think it's supposed to.
 1. Walk back up call stack to see if any of the arguments expected to be one type are actually of that type, e.g. non-null, array, etc.
-1. Write (or run an existing) load or stress test.
+1. Write a (or run an existing) load or stress test.
 
 
 And **before I finally +1 the change I check that:**
