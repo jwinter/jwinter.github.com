@@ -46,7 +46,7 @@ Things that fall under that last bullet would be any change in data structure, a
 
 After that first pass, I'll either be just about done if it's a small change or ready to start taking a closer look at the bits I've identified from the first pass. 
 
-This is the point where I usually **read the request that spawned this change** (bug report/feature request/bar napkin) and then **actually use the new feature or attempt to repro the bug**. I don't think most people do this, based on how many garbage features or unfixed bugs I've shipped that my co-workers have happily +1ed. This is a really important step, maybe the most important, so please actually run the code that you're reviewing.
+This is the point where I usually **read the request that spawned this change** (bug report/feature request/bar napkin) and then **actually use the new feature or attempt to repro the bug**. I don't think most people do this. This is a really important step, maybe the most important, so please actually run the code that you're reviewing.
 
 **Now, when taking a closer look, I'll do any combination of the following:**
 
