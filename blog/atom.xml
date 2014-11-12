@@ -4,7 +4,7 @@
   <title><![CDATA[jwinter.org]]></title>
   <link href="http://jwinter.org/blog/atom.xml" rel="self"/>
   <link href="http://jwinter.org/blog/"/>
-  <updated>2014-11-11T12:13:31-05:00</updated>
+  <updated>2014-11-12T10:31:50-05:00</updated>
   <id>http://jwinter.org/blog/</id>
   <author>
     <name><![CDATA[Joe W.]]></name>
@@ -18,7 +18,7 @@
     <link href="http://jwinter.org/blog/2014/10/31/code-review-jwinter-style/"/>
     <updated>2014-10-31T00:00:00-04:00</updated>
     <id>http://jwinter.org/blog/2014/10/31/code-review-jwinter-style</id>
-    <content type="html"><![CDATA[<p>I really enjoy reviewing code. I think it&#8217;s mostly because I enjoy listening and talking to people about programming. So here are some thoughts of my rambling thoughts on reviewing code.</p>
+    <content type="html"><![CDATA[<p>I really enjoy reviewing code. I think it&#8217;s mostly because I enjoy listening and talking to people about programming. So here are some of my rambling thoughts on reviewing code.</p>
 
 <p>First, I <strong>try to be cognizant of other people&#8217;s feelings during code review</strong>. It&#8217;s easy to be rude by giving curt, negative feedback. Sometimes it takes more time to reword a comment in more sensitive language. I&#8217;ve never regretted taking the time to do that. I have regretted hastily sending off a comment that sounds like a jerk wrote it.</p>
 
